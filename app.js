@@ -3,6 +3,8 @@ const app=express();
 const dns=require("dns");
 const visitorRoutes=require("./src/routes/visitorRoutes.js");
 const authRoutes=require("./src/routes/authRoutes.js");
+const passRoutes=require("./src/routes/passRoutes.js");
+const checkLogRoutes=require("./src/routes/checkLogRoutes.js");
 
 app.use(express.json());
 
@@ -15,8 +17,10 @@ app.get("/health",(req,res) => {
     res.send("ok");
 });
 
-app.use("/api/visitor", visitorRoutes);
+app.use("/visitor", visitorRoutes);
 app.use("/auth", authRoutes);
+app.use("/pass",passRoutes);
+app.use("/log",checkLogRoutes);
 
 
 
